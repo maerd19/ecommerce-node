@@ -1,11 +1,21 @@
 const express = require('express')
-const app = express()
+const mongoose = require('mongoose')
 require('dotenv').config()
 
+// app
+const app = express()
 
-app.get('/', (req, res) => {
-    res.send('hello from node ')
-})
+//db
+mongoose
+    .connect(process.env.DATABASE, {
+        useNewUrlParser: true
+    })
+    .then(() => console.log('DB Connected'))
+ 
+mongoose
+    .connection.on('error', err => {
+        console.log(`DB connection error: ${err.message}`)
+    })
 
 const port = process.env.PORT || 8000
 
