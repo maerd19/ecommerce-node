@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const { 
-    create,
+const {
     productById,
+    create,
     read,
     remove,
     update 
